@@ -1,0 +1,27 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #EEEEEE;
+    color: #212529;
+}
+header {
+    margin-top: 180px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 56px;
+    font-weight: bold;
+}
+#container {
+    margin: auto;
+    width: 512px;
+    height: 512px;
+}
+#container div {
+    width: 32px;
+    height: 32px;
+    outline: 1px solid;
+    float: left;
+}
+.colored {
+    background-color: #212529;
+}
