@@ -9,11 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&display=swap" rel="stylesheet">
     <title>Etch-a-Sketch</title>
-    <header>Etch-a-Sketch</header>
 </head>
 <body>
+    <header>Etch-a-Sketch</header>
+    <div class="tools">
+        <input type="image" id="color-toggle" src="./color-toggle.png">
+        <input type="image" id="trash" src="./trash.png" >
+        <div class="slider">
+            <div id="size-value">16 x 16</div>
+            <input type="range" id="size-slider" name="size-slider" value="16" min="16" max="64" step="2">
+        </div>
+    </div>
     <div id="container"></div>
-
+    <footer>Created by&nbsp;<a href="https://github.com/obiwanskywalkr">obiwanskywalkr</a></footer>
+ 
 <script src="./script.js"></script>
 </body>
 </html>
