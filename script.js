@@ -1,6 +1,26 @@
-const container = document.querySelector('#container');
+const container = document.querySelector('#container')
+const colorToggle = document.querySelector('#color-toggle')
+const trash = document.querySelector('#trash');
 const slider = document.querySelector('#size-slider');
+
 let size = (512 / slider.value);
+let toggled = false;
+
+colorToggle.addEventListener('click', () => {
+    newGrid();
+    if (toggled == true) {
+        colorToggle.classList.toggle('active')
+        return toggled = false;
+    } else if (toggled == false) {
+        colorToggle.classList.toggle('active')
+        return toggled = true;
+    }
+});
+
+trash.addEventListener('click', () => {
+    clearGrid();
+    newGrid();
+});
 
 slider.addEventListener('input', () => {
     updateSize();
@@ -21,19 +41,11 @@ function newGrid() {
         box.style.width = `${size}px`;
         box.style.height = `${size}px`;
         box.addEventListener('mouseover', (e) => {
-            e.currentTarget.classList.add('colored');
-        })
-        container.appendChild(box);
-    }
-}
-function newColorGrid() {
-    for (let i = 0; i < (slider.value * slider.value); i++) {
-        let box = document.createElement('div');
-        box.setAttribute('class', 'box');
-        box.style.width = `${size}px`;
-        box.style.height = `${size}px`;
-        box.addEventListener('mouseover', (e) => {
-            e.currentTarget.classList.add('.colored');
+            if (toggled == false) {
+                e.currentTarget.style.backgroundColor = '#212529';
+            } else if (toggled == true) {
+                e.currentTarget.style.backgroundColor = `rgb(${getRandomRGB()}, ${getRandomRGB()}, ${getRandomRGB()})`;
+            }
         });
         container.appendChild(box);
     }
@@ -52,8 +64,6 @@ function updateSize() {
     size = (512 / slider.value);
 }
 
-const trash = document.querySelector('#trash');
-trash.addEventListener('click', () => {
-    clearGrid();
-    newGrid();
-});
+function getRandomRGB() {
+    return Math.floor(Math.random() * 256);
+}
